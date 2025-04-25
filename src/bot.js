@@ -160,7 +160,10 @@ bot.hears("💄 Косметика", async (ctx) => {
         [Markup.button.callback("Click me", "action")],
       ]);
 
-      ctx.reply(`${e.name} ${e.description}`, keyboard);
+      ctx.replyWithPhoto(`http://185.195.27.188${e.image}`, {
+        caption: `${e.name}, ${e.description}`,
+        ...keyboard,
+      });
     });
   } catch (error) {
     console.error(error);
