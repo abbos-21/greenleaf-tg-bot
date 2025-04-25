@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 const multer = require("multer");
@@ -7,7 +8,7 @@ const methodOverride = require("method-override");
 
 const prisma = new PrismaClient();
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Configure image upload directory
 const uploadDir = path.join(__dirname, "..", "public", "uploads");
@@ -112,6 +113,6 @@ app.delete("/products/:id", async (req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
 });

@@ -3,6 +3,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 require("dotenv").config();
 
+const PORT = process.env.PORT || 3000;
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 const channelUsername = "-1002594775347"; // Replace with your actual channel username
@@ -160,7 +161,7 @@ bot.hears("💄 Косметика", async (ctx) => {
         [Markup.button.callback("Click me", "action")],
       ]);
 
-      ctx.replyWithPhoto(`http://185.195.27.188${e.image}`, {
+      ctx.replyWithPhoto(`http://185.195.27.188:${PORT}${e.image}`, {
         caption: `${e.name}, ${e.description}`,
         ...keyboard,
       });
